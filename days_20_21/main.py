@@ -26,34 +26,18 @@ while snake_game_on:
     screen.update()
     time.sleep(0.1)
     snake.moving_snake()
+    snake.come_back()
 
     if snake.head.distance(food) < 15:
         food.refresh()
         snake.extend()
         score.count_score()
 
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        snake_game_on = False
-        score.game_over()
-
-    for segment in snake.snake_list:
-        if segment == snake.head:
-            pass
-        elif snake.head.distance(segment) < 10:
+    for segment in snake.snake_list[1:]:
+        if snake.head.distance(segment) < 10:
+            score.reset()
             snake_game_on = False
             score.game_over()
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 screen.exitonclick()

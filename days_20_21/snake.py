@@ -52,3 +52,16 @@ class Snake:
         if start_position == 90 or start_position == 270:
             self.snake_list[0].setheading(0)
 
+    def come_back(self):
+        pos_y = self.head.ycor()
+        pos_x = self.head.xcor()
+        if self.head.xcor() > 280:
+            self.head.goto(-280, pos_y)
+        elif self.head.xcor() < -280:
+            self.head.goto(280, pos_y)
+        if self.head.ycor() > 280:
+            self.head.goto(pos_x, -280)
+        elif self.head.ycor() < -280:
+            self.head.goto(pos_x, 280)
+
+
